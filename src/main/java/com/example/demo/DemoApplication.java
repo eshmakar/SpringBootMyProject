@@ -2,18 +2,10 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.awt.*;
-import java.io.File;
-import java.io.FileReader;
+import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
-import java.io.Reader;
 import java.net.*;
-import java.util.Random;
+import static com.example.demo.Start.glavnayaStranica;
 
 @SpringBootApplication //означает что этот класс является spring - говским
 @RestController // без этого контроллера не работает
@@ -23,25 +15,43 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args); //всегда необходимо так запускать Spring приложения
     }
 
+
+    @RequestMapping(value = "/") //при переходе на localhost:8080/ - выводит это сообщение
+    public StringBuilder greeting() {
+       return new Start().sbb();
+
+    }
+
     @GetMapping("/hello") //при открытий localhost:8080//hello
     public String hello(@RequestParam(value = "name", defaultValue = "World!") String name) {
-        return String.format("Hello %s!", name); //выводит "Hello World!"
+        return String.format(glavnayaStranica + "Hello %s!", name); //выводит "Hello World!"
     }
 
 
-    @GetMapping(value = "/{number}") //при написании любых цифр, например localhost:8080//100
-    public Object c(@PathVariable int number) {
-        StringBuilder s = new StringBuilder();
-        for (int i = 1; i <= number; i++) {
-            s.append(String.format(i + "<br>")); //выводит диапазон цифр от 1 - до 100
-        }
-        return s;
+    //РАБОЧИЙ КОД
+    @GetMapping(value = "/for/{nu}" + "-" + "{nu2}") //при написании любых цифр, например localhost:8080//100
+    public Object c0(@PathVariable long nu, @PathVariable long nu2) {
+     return glavnayaStranica + new For().forEach(nu, nu2);
     }
+
+
+    //возводит в степень на эту же цифру. Пример http://localhost:8080/155
+    @GetMapping(value = "/{num}") //при написании любых цифр, например localhost:8080//100
+    public Object c(@PathVariable int num) {
+     return glavnayaStranica +  new PowToPow().pow(num);
+    }
+
+    //возводит в степень. Пример: http://localhost:8080/15x5
+    @GetMapping(value = "/pow/{number}" + "x" + "{number2}") //при написании любых цифр, например localhost:8080//100x15
+    public Object c2(@PathVariable int number, @PathVariable int number2) {
+     return glavnayaStranica + new PowXpow().powXpow(number, number2);
+    }
+
 
     @GetMapping("/random") //при переходе на random
     public String random() throws URISyntaxException, IOException {
-        return new Rand().randd() + new Rand().randd()+ new Rand().randd()+ new Rand().randd()+ new Rand().randd()
-                + new Rand().randd()+ new Rand().randd()+ new Rand().randd()+ new Rand().randd()+ new Rand().randd();
+        return glavnayaStranica + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd()
+                + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd();
         //выводится рандомные сайты
 
 /*

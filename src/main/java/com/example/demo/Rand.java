@@ -7,7 +7,7 @@ public class Rand {
     public String randd() {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
-        int targetStringLength = 4; //длина текста
+        int targetStringLength = 6; //длина текста
         Random random = new Random();
         StringBuilder buffer = new StringBuilder(targetStringLength);
 
@@ -17,7 +17,7 @@ public class Rand {
             buffer.append((char) randomLimitedInt);
         }
         String generatedString = buffer.toString();
-        String site = "http://" + generatedString + ".com"; //переобразует в ссылку
+        String site = "http://" + generatedString + ".ru"; //переобразует в ссылку
         String blank = "_blank";
 
         char dm = (char) 34; // символ двойные кавычки, чтобы составить html тег
