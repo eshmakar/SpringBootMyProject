@@ -50,8 +50,8 @@ public class DemoApplication {
 
     @GetMapping("/random") //при переходе на random
     public String random() throws URISyntaxException, IOException {
-        return glavnayaStranica + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd()
-                + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd();
+        return glavnayaStranica + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd()
+                + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd() + new Rand().randd();
         //выводится рандомные сайты
 
 /*
