@@ -83,11 +83,17 @@ public class DemoApplication {
     }
 
     @GetMapping(value = "/reverse/{name}")
-    //Приветствует пользователя именем, который ввел в адресную строку http://localhost:8080/Marat
-    public String reverse(@PathVariable StringBuffer name) {   //@PathVariable - вставляет введенное имя
+    public String reverse(@PathVariable StringBuffer name) {
         StringBuffer stringBuffer = new StringBuffer(name);
         StringBuffer stringBuffer2 = new StringBuffer(name);
-        return "Исходный текст: " + "<br>" + stringBuffer + "<br>" + "<br>"+ "<br>" + "Текст наоборот (reverse): " + "<br>" + stringBuffer2.reverse();
+        return "Исходный текст: " + "<br>" + stringBuffer + "<br>" + "<br>" + "<br>" + "Текст наоборот (reverse): " + "<br>" + stringBuffer2.reverse();
+    }
+
+
+    @GetMapping(value = "/case/{name}")
+    public String casee(@PathVariable String name) {
+        String text = name;
+        return "Исходный текст: " + "<br>" + text + "<br>" + "<br>" + "<br>" + "прописные буквы: " + "<br>" + text.toLowerCase() + "<br>" + "<br>" + "<br>" + "ЗАГЛАВНЫЕ БУКВЫ: " + "<br>" + text.toUpperCase();
     }
 
 }

@@ -14,7 +14,8 @@ class Start {
                 "<a href=").append(dm).append(URL + "for/1-100/").append(dm).append(">").append("Диапазон цифр").append("</a><br>" +
                 "<a href=").append(dm).append(URL + "55/").append(dm).append(">").append("Степень введенного числа на самого себя").append("</a><br>" +
                 "<a href=").append(dm).append(URL + "pow/12x5/").append(dm).append(">").append("Ручное указывание степени и числа").append("</a><br>" +
-                "<a href=").append(dm).append(URL + "reverse/Текст").append(dm).append(">").append("Текст наоборот").append("</a><br>");
+                "<a href=").append(dm).append(URL + "reverse/Текст").append(dm).append(">").append("Текст наоборот").append("</a><br>" +
+                "<a href=").append(dm).append(URL + "case/helLo/").append(dm).append(">").append("Текст с прописными, ЗАГЛАВНЫМИ буквами").append("</a><br>");
         return sb;
     }
 
