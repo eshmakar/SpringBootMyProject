@@ -3,8 +3,10 @@ package com.example.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
+
 import java.io.IOException;
 import java.net.*;
+
 import static com.example.demo.Start.glavnayaStranica;
 
 @SpringBootApplication //означает что этот класс является spring - говским
@@ -18,7 +20,7 @@ public class DemoApplication {
 
     @RequestMapping(value = "/") //при переходе на localhost:8080/ - выводит это сообщение
     public StringBuilder greeting() {
-       return new Start().sbb();
+        return new Start().sbb();
 
     }
 
@@ -31,20 +33,20 @@ public class DemoApplication {
     //РАБОЧИЙ КОД
     @GetMapping(value = "/for/{nu}" + "-" + "{nu2}") //при написании любых цифр, например localhost:8080//100
     public Object c0(@PathVariable long nu, @PathVariable long nu2) {
-     return glavnayaStranica + new For().forEach(nu, nu2);
+        return glavnayaStranica + new For().forEach(nu, nu2);
     }
 
 
     //возводит в степень на эту же цифру. Пример http://localhost:8080/155
     @GetMapping(value = "/{num}") //при написании любых цифр, например localhost:8080//100
     public Object c(@PathVariable int num) {
-     return glavnayaStranica +  new PowToPow().pow(num);
+        return glavnayaStranica + new PowToPow().pow(num);
     }
 
     //возводит в степень. Пример: http://localhost:8080/15x5
     @GetMapping(value = "/pow/{number}" + "x" + "{number2}") //при написании любых цифр, например localhost:8080//100x15
     public Object c2(@PathVariable int number, @PathVariable int number2) {
-     return glavnayaStranica + new PowXpow().powXpow(number, number2);
+        return glavnayaStranica + new PowXpow().powXpow(number, number2);
     }
 
 
@@ -79,4 +81,13 @@ public class DemoApplication {
         return "<p><a href=" +dm + site + dm+ " target=" +dm + blank + dm+  ">" + site + "</a></p>" + " <br>";*/
 
     }
+
+    @GetMapping(value = "/reverse/{name}")
+    //Приветствует пользователя именем, который ввел в адресную строку http://localhost:8080/Marat
+    public String reverse(@PathVariable StringBuffer name) {   //@PathVariable - вставляет введенное имя
+        StringBuffer stringBuffer = new StringBuffer(name);
+        StringBuffer stringBuffer2 = new StringBuffer(name);
+        return "Исходный текст: " + "<br>" + stringBuffer + "<br>" + "<br>"+ "<br>" + "Текст наоборот (reverse): " + "<br>" + stringBuffer2.reverse();
+    }
+
 }
