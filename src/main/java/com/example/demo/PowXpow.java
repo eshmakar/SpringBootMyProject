@@ -3,6 +3,7 @@ package com.example.demo;
 import java.math.BigInteger;
 
 public class PowXpow {
+
     public Object powXpow(int number, int number2) {
         long start = System.currentTimeMillis();
         StringBuilder s = new StringBuilder();
