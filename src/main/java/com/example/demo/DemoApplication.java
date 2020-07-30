@@ -18,7 +18,7 @@ public class DemoApplication {
     }
 
 
-    @RequestMapping(value = "/") //при переходе на localhost:8080/ - выводит это сообщение
+    @RequestMapping("/") //при переходе на localhost:8080/ - выводит это сообщение, value = "/" - указывается, если задаётся более, чем один параметр
     public StringBuilder greeting() {
         return new Start().sbb();
 
